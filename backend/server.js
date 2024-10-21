@@ -21,5 +21,5 @@ const PORT = process.env.PORT || 4000;
 // Connect to the database and start the server
 app.listen(PORT, () => {
   connectDB();
-  console.log(`Server started at http://localhost:${PORT}`);
+  console.log(`Server started at http://mern-azure-app-dwgtcbhze3cxgjh7.southindia-01.azurewebsites.net:${PORT}`);
 });
