@@ -7,7 +7,7 @@ export default defineConfig({
   server:{
     proxy:{
       "/api":{
-        target:"http://mern-azure-app-dwgtcbhze3cxgjh7.southindia-01.azurewebsites.net:4000"
+        target:"https://mern-azure-app-dwgtcbhze3cxgjh7.southindia-01.azurewebsites.net:4000"
       }
     }
   }
