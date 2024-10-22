@@ -19,21 +19,24 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Serve static files from the React app
-app.use(express.static(path.join(__dirname, 'frontend/build')));
+app.use(express.static(path.join(__dirname, 'frontend/dist')));
 
 // Set up routes
 app.use('/api/products', routes);
 
 // Serve the React app for any other request
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'frontend/build', 'index.html'));
+  res.sendFile(path.join(__dirname, 'frontend/dist', 'index.html'));
 });
 
 // Set port from environment variable or default to 4000
 const PORT = process.env.PORT || 4000;
 
 // Connect to the database and start the server
-app.listen(PORT, () => {
-  connectDB();
-  console.log(`Server started at https://mern-azure-app-dwgtcbhze3cxgjh7.southindia-01.azurewebsites.net:${PORT}`);
+connectDB().then(() => {
+  app.listen(PORT, () => {
+    console.log(`Server started at ${PORT}`);
+  });
+}).catch(err => {
+  console.error('Failed to connect to the database', err);
 });
